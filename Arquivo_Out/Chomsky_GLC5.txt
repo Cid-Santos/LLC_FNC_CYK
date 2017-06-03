@@ -1,0 +1,6 @@
+S → B'A | A'B
+A → a | A'S | B'T1
+B → b | B'S | A'T1
+B' → b
+A' → a
+T1 → AA

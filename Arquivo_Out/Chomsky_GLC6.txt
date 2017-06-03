@@ -1,0 +1,7 @@
+S → PQ | λ | B'C' | A'B' | B'T1 | A'T1
+P → A'B' | A'T1
+Q → B'C' | B'T1
+B' → b
+C' → c
+A' → a
+T1 → QC'

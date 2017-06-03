@@ -1,0 +1,6 @@
+S → CB
+B → b | BT1
+C → DC' | BT1
+D → AD | d
+C' → c
+T1 → BD

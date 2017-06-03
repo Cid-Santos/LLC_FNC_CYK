@@ -1,0 +1,3 @@
+S → PQ
+P → aPb | λ
+Q → bQc | λ
