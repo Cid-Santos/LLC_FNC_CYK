@@ -1,4 +1,5 @@
-A → CB
+﻿A → CB
 B → BBD | b
 C → BBC | Dc
-D → AD | d        
+D → AD | d
+ 

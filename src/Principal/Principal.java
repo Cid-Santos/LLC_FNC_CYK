@@ -15,13 +15,11 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import javax.xml.transform.stream.StreamResult;
 
 /**
  *
@@ -244,7 +242,7 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        openFile("\\Arquivo_In","GLC");
+        openFile("\\Arquivo_In", "GLC");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public String getGramatica() {
@@ -286,19 +284,25 @@ public class Principal extends javax.swing.JFrame {
         } else {
             jTInArg.setText(jTInArg.getText() + "\n\n1. Forma Normal De Chomsky : \n" + getGramatica());
         }
-
-
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         //Aplica regra CYK
-        CYK cyk = new CYK();
-        cyk.processGrammarFile(InArq);
-        if (cyk.processString(jTSentenca.getText())) {
-            System.out.println("true");
-        } else {
-            System.out.println("false");
+        CYK parser = new CYK();
+        int qtdRegras;
+        char variavel;
+        String Producao;
+        for (Producao producao : gramatica) {
+            variavel = producao.getVariavel().charAt(0);
+            qtdRegras = producao.getRegras().size();
+            Producao = (producao.getRegras().get(qtdRegras - 1));
+            parser.AddRule(variavel, Producao);
         }
+        String w = jTSentenca.getText();
+        if (w.length() > 1) {
+            parser.process(w);
+        }
+        jTInArg.setText(jTInArg.getText() + "\n\nSaida CYK: \n" + parser.printResult());
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -312,7 +316,6 @@ public class Principal extends javax.swing.JFrame {
                 if (_gramatica != null) {
                     buffW.write(_gramatica);//Leia um arquivo e Escreva no outro
                 }
-                //fechar o buff
                 buffW.close();
                 JOptionPane.showMessageDialog(null, "Arquivo gerado com sucesso!");
             }
@@ -324,7 +327,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        openFile("\\Arquivo_Out","FNC");
+        openFile("\\Arquivo_Out", "FNC");
     }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
