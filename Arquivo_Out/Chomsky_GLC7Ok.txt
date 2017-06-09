@@ -1,0 +1,6 @@
+S → λ | A | XZ | YZ
+A → A | XZ | YZ
+B → A | YZ | XZ
+X → a
+Y → b
+Z → AZ

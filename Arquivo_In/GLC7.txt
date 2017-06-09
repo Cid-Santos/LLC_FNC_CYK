@@ -1,0 +1,3 @@
+S → A
+A → aAbb| B
+B → bBaa| A | λ

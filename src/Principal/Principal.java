@@ -47,7 +47,7 @@ public class Principal extends javax.swing.JFrame {
         chomsky = null;
     }
 
-    private void openFile(String folder, String tipoFile) {
+    private void openFile(String folder, String tipoFile, boolean val) {
         try {
             inicializaObj();
             String current = new java.io.File(".").getCanonicalPath();
@@ -242,7 +242,7 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        openFile("\\Arquivo_In", "GLC");
+        openFile("\\Arquivo_In", "GLC",false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public String getGramatica() {
@@ -327,7 +327,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        openFile("\\Arquivo_Out", "FNC");
+        openFile("\\Arquivo_Out", "FNC", true);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     /**

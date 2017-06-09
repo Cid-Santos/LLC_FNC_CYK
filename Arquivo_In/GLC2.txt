@@ -1,4 +1,2 @@
-﻿
-A → BAB | B | λ
-B → 00 | λ
-         
+﻿A → aABbb | B
+B → bBaa | A| λ   

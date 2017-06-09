@@ -68,7 +68,7 @@ public class TrataArquivos {
     public static ArrayList<Producao> arquivoLeitura(String file) {
         /*Método responsável pela abertura e leitura do arquivo de entrada*/
         ArrayList<Producao> gramatica = new ArrayList<>();
-        List<String> lin = Arrays.asList(file.split("\r\n"));
+        List<String> lin = Arrays.asList(file.split("\n"));
         String linha;
         String variavel;
         List<String> regras;

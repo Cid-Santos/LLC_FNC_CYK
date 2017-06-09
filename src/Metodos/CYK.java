@@ -41,13 +41,16 @@ public class CYK {
             }
         }
     }
+    boolean valar = false;
 
     public void fristProcess() {
+        valar = false;
         for (int i = 1; i <= n; i++) {
             for (Rule rule : rules) {
                 if (rule.right.length() == 1) {
                     if (w.charAt(i - 1) == rule.right.charAt(0)) {
                         table[i][1] += rule.left;
+                        valar = true;
                     }
                 }
             }
@@ -91,12 +94,23 @@ public class CYK {
     public void process(String x) {
         initData(x);
         fristProcess();
-       if(genTable()){
-          JOptionPane.showMessageDialog(null, "Sentença é valida!");
-       }else
-       {
-          JOptionPane.showMessageDialog(null, "Sentença não é valida!!");
-       }
+      int val = 0;
+        for (int i = 1; i <= n; i++) {
+              val = 0;
+            for (int j = 1; j <= n; j++) {
+              String c =  table[j][n + 1 - i];
+                if (c == "") {
+                  val--;  
+                }else{
+                  val ++;  
+                }
+            }
+        }
+       if (val >= n) {
+            JOptionPane.showMessageDialog(null, "Sentença é valida!");
+        } else {
+            JOptionPane.showMessageDialog(null, "Sentença não é valida!!");
+        }
     }
 
     public String printResult() {
